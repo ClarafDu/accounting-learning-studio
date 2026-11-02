@@ -1,4 +1,4 @@
-const CACHE='xunzhang-v1-20261102-bilingual';
+const CACHE='xunzhang-v1-20261102-bilingual-r2';
 const ROOT=new URL('./',self.location.href);
 const FILES=['./','index.html','styles.css','app.js','core.js','labs.js','i18n.js','content/index.js','content/lectures-1-2.js','content/lectures-3-4.js','content/lectures-5-6.js','content/lecture-7.js','icon.svg','manifest.webmanifest'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES.map(f=>new URL(f,ROOT).href))).then(()=>self.skipWaiting()));});

@@ -14,3 +14,5 @@
 These are browser/viewport checks, not physical Huawei-tablet or Android-device certification. There is no remote database or automatic cross-device sync in this release.
 
 GitHub Pages publicly deployed on 2026-11-02 after explicit user authorization. Production checks verified the map, Lecture 7, English switching, mobile layout, answer feedback, note persistence after reload, JSON backup download and relative-path assets. Production URL: https://clarafdu.github.io/accounting-learning-studio/ . Browser QA used isolated contexts; test notes are not included in source or shared with visitors.
+
+Production follow-up: the note form contains a field named id, which shadows HTMLFormElement.id. Submit routing now reads the id attribute explicitly; regression verification checks that saving a note never navigates or places its text in the URL. The service-worker cache revision was incremented.
