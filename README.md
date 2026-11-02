@@ -2,7 +2,7 @@
 
 一个以 Financial Accounting 课程课件为线索的个人自学网站。以完整知识地图为入口，随时查阅、学习和记录，无每日打卡或强制学习时长。
 
-**计划发布地址（Pages待启用）：[会计 / Accounting](https://clarafdu.github.io/accounting-learning-studio/)**
+**网站：[会计 / Accounting](https://clarafdu.github.io/accounting-learning-studio/)**
 
 ## 当前版本
 
