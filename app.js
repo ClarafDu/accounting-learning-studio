@@ -166,7 +166,7 @@ function saveNote(){
 }
 function refreshNoteAside(){const n=currentNode();if(n&&$('#lesson-notes')){$('#lesson-notes').innerHTML=lessonNotes(n.id);$('#lesson-note-count').textContent=noteCount(n.id);}}
 function currentNode(){return nodeById.get(decodeURIComponent(location.hash.split('/')[1]||''));}
-function closeNote(){saveNote();$('#note-dialog').close();noteContext=null;if(location.hash==='#notes')renderNotes();}
+function closeNote(){saveNote();$('#note-dialog').close();noteContext=null;if(location.hash==='#notes'){renderNotes();localizeUI();}}
 function download(filename,text,type){const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function exportJSON(){download(`会计-学习备份-${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(state,null,2),'application/json');notify('备份已导出，内含个人记录，请妥善保存。');}
 function openSettings(){
@@ -243,7 +243,7 @@ document.addEventListener('submit',event=>{
 });
 $('#note-form').addEventListener('input',()=>{clearTimeout(noteTimer);noteTimer=setTimeout(saveNote,400);$('#note-autosave').textContent='正在保存…';});
 $('#note-dialog').addEventListener('cancel',()=>{saveNote();});
-$('#note-dialog').addEventListener('close',()=>{saveNote();noteContext=null;if(location.hash==='#notes')renderNotes();});
+$('#note-dialog').addEventListener('close',()=>{saveNote();noteContext=null;if(location.hash==='#notes'){renderNotes();localizeUI();}});
 window.addEventListener('pagehide',()=>{if(noteContext)saveNote();});
 window.addEventListener('hashchange',()=>{if(noteContext)closeNote();renderRoute();});
 window.addEventListener('storage',event=>{if(event.key!==STORAGE_KEY||!event.newValue)return;try{const remote=JSON.parse(event.newValue);if(validState(remote)){state=mergeStates(state,remote);updateCounts();if(!$('#note-dialog').open&&!practice)renderRoute(false);else notify('另一窗口有新记录，已合并到本机。');}}catch{}});
